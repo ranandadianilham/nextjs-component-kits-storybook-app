@@ -2,17 +2,16 @@
 import Input from "./Input";
 
 export default {
-    title: 'Components/Input',
+    title: "Components/Input",
     component: Input,
-    argTypes: {}
 }
 
 
-const Template = args => <Input {...args} />
+const Template = (args) => <Input {...args} />
 
-const defaultInput = Template.bind({});
+export const DefaultInput = Template.bind({});
 
-defaultInput.args = {
+DefaultInput.args = {
     title: "Title",
     label: "Label",
     type: "text",

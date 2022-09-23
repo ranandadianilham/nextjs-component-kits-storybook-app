@@ -10,8 +10,8 @@ export default {
 
 const Template = args => <SelectOption {...args} />
 
-const defaultOpt = Template.bind({});
+export const DefaultOpt = Template.bind({});
 
-defaultOpt.args = {
+DefaultOpt.args = {
     value: { value: 'vanilla', label: 'Vanilla' }
 }
