@@ -4,6 +4,7 @@ import Button from '../components/Button/Button'
 import Input from '../components/Input/Input'
 import SelectOption from '../components/SelectOption/SelectOption'
 import styles from '../styles/Home.module.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Home() {
   return (

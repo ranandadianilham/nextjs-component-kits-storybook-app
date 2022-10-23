@@ -1,6 +1,7 @@
+/* eslint-disable react/display-name */
 import PropTypes from 'prop-types';
 
-function Button({
+export default function Button({
     label, 
     isBordered = false, 
     borderColor = 'black', 
@@ -29,8 +30,6 @@ function Button({
         )
 }
 
-export default Button;
-
 Button.propTypes = {
     label: PropTypes.string,
     backgroundColor: PropTypes.string,
@@ -40,4 +39,12 @@ Button.propTypes = {
     isRounded: PropTypes.bool,
     isBordered: PropTypes.bool,
     borderColor: PropTypes.string,
+}
+
+Button.GroupStyled = ({label = '', handleClick = () => {}, style = {}, ...props}) => {
+    return (
+        <button onClick={handleClick} style={style}>
+                {label}
+        </button>
+    )
 }
