@@ -1,4 +1,4 @@
-import { Button, Card } from "react-bootstrap";
+import { Button, Card, Carousel } from "react-bootstrap";
 
 const First = ({ }) => {
 
@@ -10,14 +10,28 @@ const First = ({ }) => {
     }]
 
     return (<>
-        <ItemCard />
+    <Carousel style={{
+        width: '60%',
+        border: '1px solid red',
+        alignSelf: 'center'
+    }}>
+        <Carousel.Item>
+            <ItemCard />
+        </Carousel.Item>
+        <Carousel.Item>
+            <ItemCard />
+        </Carousel.Item>
+        <Carousel.Item>
+            <ItemCard />
+        </Carousel.Item>
+    </Carousel>
     </>);
 }
 
-const ItemCard = ({}) => {
+const ItemCard = ({title = '', desc = '', onClick = () => {}, imgLink = ''}) => {
     return <>
         <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src="holder.js/100px180" />
+            <Card.Img variant="top" src="https://picsum.photos/100" />
             <Card.Body>
                 <Card.Title>Card Title</Card.Title>
                 <Card.Text>
