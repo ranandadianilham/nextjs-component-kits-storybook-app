@@ -6,6 +6,8 @@ import { useEffect } from "react"
 const Camislide = () => {
     const trackRef = useRef(null)
     const [transformX, setTransformX] = useState(0)
+    const [imageXpos, setImageXpos] = useState(50)
+    const [labelText, setLabelText] = useState('text')
     //https://www.youtube.com/watch?v=PkADl0HubMY
     //hypherplexed
     
@@ -31,7 +33,7 @@ const Camislide = () => {
         width: "40vmin",
         height: "56vmin",
         objectFit: "cover",
-        objectPosition: "center",
+        objectPosition: `${imageXpos}% 50%`,
     }
     
     useEffect(() => {
@@ -56,14 +58,16 @@ const Camislide = () => {
                 
                 
                 trackRef.current.dataset.percentage = nextPercentage;
-                trackRef.current.style.transform = `translate(${nextPercentage}%, 30%)`
+                setLabelText(nextPercentage);
+                //trackRef.current.style.transform = `translate(${nextPercentage}%, 30%)`
                 /* trackRef.current.animate({
                     transform: `translate(${nextPercentage}%, 30%)`
                 }, {
                     duration: '1200',
                     fill: 'forwards'
                 }) */
-                //setTransformX()
+                setTransformX(nextPercentage)
+                setImageXpos(nextPercentage + 100)
                 //console.log('percentage', trackRef.current.style)
                 if(typeof trackRef.current !== "undefined") {
                     
@@ -74,7 +78,7 @@ const Camislide = () => {
             window.onmouseup = (e) => {
                 console.log('mouse up')
                 if(typeof trackRef.current !== "undefined") {
-                    trackRef.current.dataset.MouseDownAt =0;
+                    trackRef.current.dataset.MouseDownAt = 0;
                     trackRef.current.dataset.prevPercentage = trackRef.current.dataset.percentage;
                 }
             }
@@ -84,7 +88,7 @@ const Camislide = () => {
     
     
     return (<div style={bodyStyle}>
-        body
+        <h1>{labelText}</h1>
         <div ref={trackRef} style={imageTrackStyle} data-mouse-down-at="0" data-prev-percentage="0">
             <img style={imageStyle} src="/images/unsplash/unsplash1.jpg" draggable="false" />
             <img style={imageStyle} src="/images/unsplash/unsplash2.jpg" draggable="false" />
